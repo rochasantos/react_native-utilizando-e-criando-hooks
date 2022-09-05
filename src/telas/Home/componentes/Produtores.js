@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, StyleSheet} from 'react-native';
 
 import Topo from './Topo.js';
+import Produtor from './Produtor.js';
 
 import {carregaProdutores} from '../../../servicos/carregaDados.js';
 
@@ -20,16 +21,17 @@ export default function Produtores() {
   }, []);
 
   return (
-    <View>
-      <FlatList
-        data={produtores}
-        ListHeaderComponent={() => <>
+    <FlatList
+      data={produtores}
+      keyExtractor={({nome}) => nome}
+      ListHeaderComponent={() => (
+        <>
           <Topo />
           <Text style={estilos.titulo}>{titulo}</Text>
-        </>}
-        renderItem={({item}) => <Text>{item.nome}</Text>}
-      />
-    </View>
+        </>
+      )}
+      renderItem={({item}) => <Produtor {...item} />}
+    />
   );
 }
 
