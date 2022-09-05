@@ -1,14 +1,18 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
-import Topo from './componentes/Topo';
 import Produtores from './componentes/Produtores';
 
 export default function Home() {
   return (
-    <>
-      <Topo />
+    <View style={estilos.tela}>
       <Produtores />
-    </>
+    </View>
   );
 }
+
+const estilos = StyleSheet.create({
+  tela: {
+    //flex: 1,
+  },
+});

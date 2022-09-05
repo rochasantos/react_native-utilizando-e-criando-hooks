@@ -11,7 +11,24 @@ Declaramos o objeto topo dentro do _state_ e setamos seus valores dentro do _com
 ## Aula 3
 ### Lista de produtores
 Adicionamos a cor do estilo _boasVindas_ e _legenda_ para respectivamente `"#464646"` e `"#a3a3a3"`
-Criamos o componente de função `Produtores.js.` Adicionamos a ele o hook _useEffect()_ substituindo o _componentDidMount_. Para isso o array passado no segundo parâmetro da função foi passado vazio. Foi passado um ```js<Text>Produtores</Text>``` para testa-lo adicionando no `index.js` da pasta `Home` juntamente com o `Topo`.
+Criamos o componente de função `Produtores.js.` Adicionamos a ele o hook _useEffect()_ ao invés do _componentDidMount_. Para isso o array passado no segundo parâmetro da função foi passado vazio. Foi passado um ```js<Text>Produtores</Text>``` para testa-lo adicionando no `index.js` da pasta `Home` juntamente com o `Topo`.
+```js
+import React, {useEffect, useState} from 'react';
+import {Text} from 'react-native';
+
+import {carregaProdutores} from '../../../servicos/carregaDados.js';
+
+export default function Produtores() {
+  const [produtores, setProdutores] = useState([]);
+
+  useEffect(() => {
+    const {lista} = carregaProdutores();
+    setProdutores(lista);
+  }, []);
+
+  return <Text>Produtores</Text>;
+}
+```
 ### Armazenando produtores
 ```js
 // no começo da função
@@ -26,4 +43,6 @@ Utilizamos o <FlatList> para passarmos a lista de produtores
 Utilizamos os atributos do FlatList: data, renderItem, ListHeaderComponent
 Foi criado uma função TituloLista para organizar nosso código
 Estilizamos o título
+## Aula 3
+
  
