@@ -6,10 +6,10 @@ import estrelaCinza from '../assets/estrelaCinza.png';
 
 const getImagem = preenchida => (preenchida ? estrela : estrelaCinza);
 
-const Estrela = ({onPress, desabilitada, preenchida, grande, key}) => {
+const Estrela = ({onPress, desabilitada, preenchida, grande}) => {
   const estilos = estilosFuncao(grande);
   return (
-    <TouchableOpacity key={key} onPress={onPress} disabled={desabilitada}>
+    <TouchableOpacity onPress={onPress} disabled={desabilitada}>
       <Image source={getImagem(preenchida)} style={estilos.estrela} />
     </TouchableOpacity>
   );

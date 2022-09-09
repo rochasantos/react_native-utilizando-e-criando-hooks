@@ -7,7 +7,6 @@ export default function useProdutores() {
   const [lista, setLista] = useState([]);
 
   useEffect(() => {
-    console.log('chamando useProdutores');
     const produtores = carregaProdutores();
     setTitulo(produtores.titulo);
     setLista(produtores.lista);

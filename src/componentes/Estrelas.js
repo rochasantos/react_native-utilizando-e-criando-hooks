@@ -3,11 +3,7 @@ import {View, StyleSheet} from 'react-native';
 
 import Estrela from './Estrela.js';
 
-const Estrelas = ({
-  quantidade: quantidadeAntiga,
-  editavel = true,
-  grande = false,
-}) => {
+const Estrelas = ({quantidade: quantidadeAntiga, editavel = false}) => {
   const [quantidade, setQuantidade] = useState(quantidadeAntiga);
 
   const RenderEstrelas = () => {
