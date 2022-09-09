@@ -1,20 +1,30 @@
-import React from 'react';
-import {View, StyleSheet, Image, Text} from 'react-native';
+import React, {useState} from 'react';
+import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 
-// import { Container } from './styles';
+import Estrelas from '../../../componentes/Estrelas.js';
 
 const Produtor = ({nome, imagem, distancia, estrelas}) => {
+  const [selecionado, setSelecionado] = useState(false);
+
   return (
-    <View style={estilos.cartao}>
+    <TouchableOpacity
+      style={estilos.cartao}
+      onPress={() => {
+        setSelecionado(!selecionado);
+      }}>
       <Image accessibilityLabel="logo" source={imagem} style={imagem} />
       <View style={estilos.informacoes}>
         <View>
           <Text style={estilos.nome}>{nome}</Text>
-          <Text>*****</Text>
+          <Estrelas
+            quantidade={3}
+            editavel={selecionado}
+            grande={selecionado}
+          />
         </View>
         <Text style={estilos.distancia}>{distancia}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -25,6 +35,13 @@ const estilos = StyleSheet.create({
     marginHorizontal: 16,
     borderRadius: 6,
     flexDirection: 'row',
+    // android
+    elevation: 4,
+    // ios
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
   },
   imagem: {
     width: 48,
